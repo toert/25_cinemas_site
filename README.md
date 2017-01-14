@@ -1,7 +1,17 @@
 # Cinemas Site
 
-{TODO. There will be project description}
+Данный проект собирает данные с сайта афиша и выводит их на страницу. Пример работы можно посмотреть здесь.
 
-# Project Goals
+##Установка
 
-The code is written for educational purposes. Training course for web-developers - [DEVMAN.org](https://devman.org)
+Для использования требуется установить зависимости, например так:
+
+    pip3 install -r requirements.txt
+    
+##Запуск
+
+Для запуска выполняем:
+
+    python3 server.py
+    
+переходим по ссылке localhost:5000/, готово.

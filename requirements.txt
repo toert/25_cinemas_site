@@ -1,1 +1,5 @@
+bs4==0.0.1
 flask==0.11.1
+Flask-SQLAlchemy==2.1
+requests==2.12.4
+gunicorn==19.4.5

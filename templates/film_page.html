@@ -22,38 +22,50 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">Список фильмов</a>
-          <a class="navbar-brand" href="#">API</a>
+          <a class="navbar-brand" href="../">К списку фильмов</a>
         </div>
       </div>
     </nav>
       
+   
+    <header id="top" class="header hidden-xs" style="background-image: url({{info[8]}})">
+        <div class="text-vertical-center descr">
+        </div>
+    </header>
+    <img src="{{info[8]}}" class="hidden-sm hidden-md hidden-lg hidden-xl"  style="width: 100%; height: auto">
       
     <div class="container">
-        <h1 class="blue text-center">Дайджест кинофильмов</h1>
-        {% for film in info %}
         <div class="row">
-            <hr>
-            <div class="col-sm-3 col-xs-12">
-                <a href="{{film[4]}}">
-                <img src="{{film[5]}}" class="max-width" alt="Film photo"></a>
+            <div class="col-xs-12 col-sm-offset-1 col-sm-5 max-height">
+                <br><h1 class="blue">{{info[0]}}</h1>
+                
             </div>
-            <div class="col-sm-9 col-xs-12">
-                <a href="{{film[4]}}"><h4 class="blue">{{film[0]}}<span class="pull-right">Рейтинг {{film[1]}} <span class="glyphicon glyphicon-star grey"></span> </span></h4></a>
-                <p>{{film[2]}}</p>
-                <p>Жанр: {{film[3]}}</p>
-                <a href="{{film[4]}}" class="btn btn-default" role="button">Перейти на страницу фильма</a>
+            <div class="col-xs-12 col-sm-of col-sm-5">
+                <h2>Рейтинг фильма</h2>
+                <h1 class="blue">{{info[1]}} <span class="glyphicon glyphicon-star grey"></span> {{info[2]}} <span class="glyphicon glyphicon-user grey"></span></h1>
+                
             </div>
         </div>
-        {% endfor %}
-    </div>
-        
-        
+        <hr>
+    </div><!-- /.container -->
+    
     <div class="container">
         <div class="row">
-            <p class="footer">Настоящий сайт создан в исключительно учебных целях. Все сведения о фильмах взяты с сайта Афиша.</p>
+            <h4 class="blue">Описание</h4>
+                <p>{{info[3]}}</p>
+          <hr>
+          <h2 class="blue">Прочая информация</h2><br>
+          <h4>Оригинальное название</h4>
+          <p>{{info[4]}}</p>
+          <br><h4>Жанр</h4>
+          <p>{{info[5]}}</p>
+          <br><h4>MPAA возрастной рейтинг фильма</h4>
+          <p>{{info[6]}}</p>
+          <br>
+          <a class="btn btn-default" href="{{info[7]}}" role="button">Перейти на сайт Афиши</a>
         </div>
     </div>
+    <footer><p>Настоящий сайт создан в исключительно учебных целях. Все сведения о фильмах взяты с сайта Афиша.</p></footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
