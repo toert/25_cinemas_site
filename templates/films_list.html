@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Что в кино">
     <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="https://pythonprogramming.net/static/favicon.ico">
 
     <title>Что в кино</title>
 
@@ -22,8 +22,8 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">Список фильмов</a>
-          <a class="navbar-brand" href="#">API</a>
+          <a class="navbar-brand" href="">Список фильмов</a>
+          <a class="navbar-brand" href="/api/docs">API</a>
         </div>
       </div>
     </nav>
@@ -35,14 +35,14 @@
         <div class="row">
             <hr>
             <div class="col-sm-3 col-xs-12">
-                <a href="{{film[4]}}">
-                <img src="{{film[5]}}" class="max-width" alt="Film photo"></a>
+                <a href="/movie/{{film['id']}}">
+                <img src="{{film['img_min']}}" class="max-width" alt="Film photo"></a>
             </div>
             <div class="col-sm-9 col-xs-12">
-                <a href="{{film[4]}}"><h4 class="blue">{{film[0]}}<span class="pull-right">Рейтинг {{film[1]}} <span class="glyphicon glyphicon-star grey"></span> </span></h4></a>
-                <p>{{film[2]}}</p>
-                <p>Жанр: {{film[3]}}</p>
-                <a href="{{film[4]}}" class="btn btn-default" role="button">Перейти на страницу фильма</a>
+                <a href="/movie/{{film['id']}}"><h4 class="blue">{{film['name']}}<span class="pull-right">Рейтинг {{film['rating']}} <span class="glyphicon glyphicon-star grey"></span></span></h4></a>
+                <p>{{film['description']}}</p>
+                <p>Жанр: {{film['genre']}}</p>
+                <a href="/movie/{{film['id']}}" class="btn btn-default" role="button">Перейти на страницу фильма</a>
             </div>
         </div>
         {% endfor %}

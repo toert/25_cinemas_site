@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Что в кино">
+    <meta name="author" content="">
+    <link rel="icon" href="https://pythonprogramming.net/static/favicon.ico">
+    <title>Что в кино</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css">
+
+  </head>
+
+  <body>
+        
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="../">Список фильмов</a>
+          <a class="navbar-brand" href="">API</a>
+        </div>
+      </div>
+    </nav>
+    
+
+      
+    <div class="container">
+        <h1 class="blue text-center">API сайта</h1>
+        <i>Руководство написано на примере языка Python 3</i><hr>
+        <p>Данный API предоставляет вам 2 метода: получить список всех фильмов, представленных на сайте, и получить по каждому фильму информацию по отдельности</p>
+        <h3>Список всех фильмов</h3>
+        <p>При обращении к <a>https://movies-digest.herokuapp.com/api/movies</a> вы можете получить список всех фильмов, которые находятся в базе данных сайта. Этот список обновляется раз в 12 часов. Ответ приходит в виде json: <br><br>
+        <code>{"movies": 
+                [{"url": "http://www.afisha.ru/movie/226786/", 
+                "id": "226786"},
+                {..},
+                {..}]</code><br><br>
+        Где "url" — ссылка на фильм на сайте Афиши, "id" — используется для получения информации о фильме
+        </p>
+        
+        <h3>Информация по каждому фильму</h3>
+        <p>При обращении к <a>https://movies-digest.herokuapp.com/api/movies/movie_id</a> вы можете получить информацию о фильме, который находится в базе данных сайта. Эта информация обновляется раз в 12 часов. Ответ приходит в виде json. <br><br>
+
+        <code>'name' — Имя фильма на кирилице<br>
+                 'rating' — рейтинг фильма на Афише<br>
+                 'rating_count' — количество проголосовавших<br>
+                 'review' — полный обзор на фильм от Афиши<br>
+                 'description' — краткое описание картины<br>
+                 'alt_name' — имя фильма на языке-оригинале<br>
+                 'genre' — жанр<br>
+                 'content' — оценка фильма по возрастному допуску<br>
+                 'url' — ссылка на Афишу<br>
+                 'id' — идентификатор <br>
+                 'image_url' — ссылка на изображение-обложку<br>
+                 'img_min' — ссылка на изображение-обложку разрешения 352х200<br></code><br><br>
+        Пример обращения: <br></p><pre>
+        
+        >>movie = requests.get(https://movies-digest.herokuapp.com/api/movies/222117).json()
+        >>print(movie['name'])
+        Ла-ла-ленд
+        </pre>
+        
+    </div>
+        
+        
+    <div class="container">
+        <div class="row">
+            <p class="footer">Настоящий сайт создан в исключительно учебных целях. Все сведения о фильмах взяты с сайта Афиша.</p>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>

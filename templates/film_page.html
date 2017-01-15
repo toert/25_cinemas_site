@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Что в кино">
     <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="https://pythonprogramming.net/static/favicon.ico">
 
     <title>Что в кино</title>
 
@@ -28,21 +28,21 @@
     </nav>
       
    
-    <header id="top" class="header hidden-xs" style="background-image: url({{info[8]}})">
+    <header id="top" class="header hidden-xs" style="background-image: url({{info['image_url']}})">
         <div class="text-vertical-center descr">
         </div>
     </header>
-    <img src="{{info[8]}}" class="hidden-sm hidden-md hidden-lg hidden-xl"  style="width: 100%; height: auto">
+    <img src="{{info['image_url']}}" class="hidden-sm hidden-md hidden-lg hidden-xl"  style="width: 100%; height: auto">
       
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-offset-1 col-sm-5 max-height">
-                <br><h1 class="blue">{{info[0]}}</h1>
+                <br><h1 class="blue">{{info["name"]}}</h1>
                 
             </div>
             <div class="col-xs-12 col-sm-of col-sm-5">
                 <h2>Рейтинг фильма</h2>
-                <h1 class="blue">{{info[1]}} <span class="glyphicon glyphicon-star grey"></span> {{info[2]}} <span class="glyphicon glyphicon-user grey"></span></h1>
+                <h1 class="blue">{{info['rating']}} <span class="glyphicon glyphicon-star grey"></span> {{info['rating_count']}} <span class="glyphicon glyphicon-user grey"></span></h1>
                 
             </div>
         </div>
@@ -52,17 +52,17 @@
     <div class="container">
         <div class="row">
             <h4 class="blue">Описание</h4>
-                <p>{{info[3]}}</p>
+                <p>{{info['review']}}</p>
           <hr>
           <h2 class="blue">Прочая информация</h2><br>
           <h4>Оригинальное название</h4>
-          <p>{{info[4]}}</p>
+          <p>{{info['alt_name']}}</p>
           <br><h4>Жанр</h4>
-          <p>{{info[5]}}</p>
+          <p>{{info['genre']}}</p>
           <br><h4>MPAA возрастной рейтинг фильма</h4>
-          <p>{{info[6]}}</p>
+          <p>{{info['content']}}</p>
           <br>
-          <a class="btn btn-default" href="{{info[7]}}" role="button">Перейти на сайт Афиши</a>
+          <a class="btn btn-default" href="{{info['url']}}" role="button">Перейти на сайт Афиши</a>
         </div>
     </div>
     <footer><p>Настоящий сайт создан в исключительно учебных целях. Все сведения о фильмах взяты с сайта Афиша.</p></footer>
