@@ -22,7 +22,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="../">К списку фильмов</a>
+          <a class="navbar-brand" href="https://movies-digest.herokuapp.com/">К списку фильмов</a>
         </div>
       </div>
     </nav>
@@ -32,17 +32,17 @@
         <div class="text-vertical-center descr">
         </div>
     </header>
-    <img src="{{info['image_url']}}" class="hidden-sm hidden-md hidden-lg hidden-xl"  style="width: 100%; height: auto">
-      
+    <img alt="movie image" src="{{info['image_url']}}" class="hidden-sm hidden-md hidden-lg hidden-xl"  style="width: 100%; height: auto">
+    {% autoescape true %}
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-offset-1 col-sm-5 max-height">
-                <br><h1 class="blue">{{info["name"]}}</h1>
+                <br><h1 class="red-header">{{info["name"]}}</h1>
                 
             </div>
             <div class="col-xs-12 col-sm-of col-sm-5">
                 <h2>Рейтинг фильма</h2>
-                <h1 class="blue">{{info['rating']}} <span class="glyphicon glyphicon-star grey"></span> {{info['rating_count']}} <span class="glyphicon glyphicon-user grey"></span></h1>
+                <h1 class="red-header">{{info['rating']}} <span class="glyphicon glyphicon-star grey"></span> {{info['voters_count']}} <span class="glyphicon glyphicon-user grey"></span></h1>
                 
             </div>
         </div>
@@ -51,22 +51,22 @@
     
     <div class="container">
         <div class="row">
-            <h4 class="blue">Описание</h4>
                 <p>{{info['review']}}</p>
           <hr>
-          <h2 class="blue">Прочая информация</h2><br>
-          <h4>Оригинальное название</h4>
-          <p>{{info['alt_name']}}</p>
-          <br><h4>Жанр</h4>
-          <p>{{info['genre']}}</p>
-          <br><h4>MPAA возрастной рейтинг фильма</h4>
-          <p>{{info['content']}}</p>
-          <br>
-          <a class="btn btn-default" href="{{info['url']}}" role="button">Перейти на сайт Афиши</a>
+          <h2 class="red-header">Прочая информация</h2><br>
+		<dl>
+			<dt>Оригинальное название</dt>
+			<dd>{{info['alt_name']}}</dd>
+          <dt>Жанр</dt>
+          <dd>{{info['genre']}}</dd>
+			<dt>MPAA возрастной рейтинг фильма</dt>
+          <dd>{{info['mpaa_rating']}}</dd>
+		</dl>
+          <a class="btn btn-default afisha-button" href="{{info['url']}}" role="button">Перейти на сайт Афиши</a>
         </div>
-        <p class="footer text-center">Настоящий сайт создан в исключительно учебных целях. Все сведения о фильмах взяты с сайта Афиша.</p>
+        <p class="footer text-center">Настоящий сайт создан в исключительно учебных целях. Все сведения о фильмах взяты с сайта <a href="http://afisha.ru">Афиша</a>.</p>
     </div>
-    
+    {% endautoescape %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>

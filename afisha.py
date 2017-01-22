@@ -36,14 +36,12 @@ def fetch_info_about_movie(url_of_movie):
         'description': film_info['description'],
         'image_url': film_info['image'],
         'rating': film_info['aggregateRating']['ratingValue'],
-        'rating_count': int(film_info['aggregateRating']['ratingCount']),
+        'voters_count': int(film_info['aggregateRating']['ratingCount']),
         'genre': film_info['genre'],
-        'content': film_info['contentRating'],
+        'mpaa_rating': film_info['contentRating'],
         'img_min': url_img_352x198
     }
     return info_to_return
-
-
 
 
 if __name__ == '__main__':

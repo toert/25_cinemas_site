@@ -1,23 +1,30 @@
-from model import Film, db
-from flask import Flask, render_template
-from afisha import parse_afisha_list
-from helpers import get_info_from_afisha, update_films_in_db, add_film_in_db, get_info_about_film_from_db
+from datetime import timedelta, datetime
 import re
 import json
+from flask import Flask, render_template
+from model import Film, db, add_film_in_db, get_info_about_film_from_db
+from afisha import parse_afisha_list, fetch_info_about_movie
+
 
 app = Flask(__name__)
 app.config.from_object('config')
 db.init_app(app)
 
-FILMS_AMOUNT = 10
+FILMS_AMOUNT = 3
+last_update_time = datetime.fromtimestamp(0) # FIXME rename variable from snake-style
 
 
 @app.route('/')
 def films_list():
-    query_all_films = get_info_from_afisha(FILMS_AMOUNT)
-    info_about_all_films = []
-    for film in query_all_films:
-        info_about_all_films.append(get_info_about_film_from_db(film.id))
+    global last_update_time
+    if datetime.now() - last_update_time > timedelta(hours=12):
+        Film.query.delete()
+        list_of_films = parse_afisha_list(FILMS_AMOUNT)
+        for link in list_of_films:
+            add_film_in_db(fetch_info_about_movie(link))
+        last_update_time = datetime.now()
+    query_all_films = Film.query.all()
+    info_about_all_films = [get_info_about_film_from_db(film.id) for film in query_all_films]
     return render_template('films_list.html', info=info_about_all_films)
 
 
@@ -28,8 +35,7 @@ def film_page(film_id):
 
 @app.route('/api/movies', methods=['GET'])
 def api_get_list():
-    list_of_films = {}
-    list_of_films['movies'] = []
+    list_of_films ={'movies': []}
     for movie in parse_afisha_list(FILMS_AMOUNT):
         list_of_films['movies'].append({'url': movie,
                                         'id': re.findall(r'http://www.afisha.ru/movie/(\d+)/', movie)[0]})
@@ -47,4 +53,4 @@ def api_show_docs():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()

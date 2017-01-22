@@ -25,26 +25,3 @@ def update_films_in_db(amount):
         add_film_in_db(fetch_info_about_movie(link))
     print('Film list was updated')
 
-
-def add_film_in_db(info_about_film):
-    new_film = Film(info_about_film)
-    db.session.add(new_film)
-    db.session.commit()
-    return new_film.film_name
-
-
-def get_info_about_film_from_db(film_id):
-    film = Film.query.filter_by(id=film_id).first()
-    film_info = {'name': film.film_name,
-                 'rating': film.rating,
-                 'rating_count': film.rating_count,
-                 'review': film.review,
-                 'description': film.description,
-                 'alt_name': film.alt_name,
-                 'genre': film.genre,
-                 'content': film.content,
-                 'url': film.url,
-                 'id': film.id,
-                 'image_url': film.image_url,
-                 'img_min': film.img_min}
-    return film_info
