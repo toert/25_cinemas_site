@@ -17,7 +17,7 @@ def parse_afisha_list(film_amount):
     soup = bs4.BeautifulSoup(raw_html, 'html.parser')
     movies = []
     for film in soup.find_all('div', class_='object s-votes-hover-area collapsed'):
-        film_url_without_schema = (film.find('div',{'class': "m-disp-table"} )).find('a', href=True)['href']
+        film_url_without_schema = (film.find('div', {'class': "m-disp-table"})).find('a', href=True)['href']
         movies.append('http:{}'.format(film_url_without_schema))
     return movies[:film_amount]
 
@@ -27,10 +27,10 @@ def fetch_info_about_movie(url_of_movie):
     soup = bs4.BeautifulSoup(raw_html, 'html.parser')
     film_info = json.loads(soup.find('script', {'type': 'application/ld+json'}).text)
     url_img_352x198 = sub(r'http://s1.afisha.net/',
-                         r'https://img06.rl0.ru/afisha/352x198/s1.afisha.net/', film_info['image'])
+                          r'https://img06.rl0.ru/afisha/352x198/s1.afisha.net/', film_info['image'])
     info_to_return = {
         'name': film_info['name'],
-        'alt_name': film_info['alternativeHeadline'],
+        'original_lang_name': film_info['alternativeHeadline'],
         'url': film_info['url'],
         'review': film_info['text'],
         'description': film_info['description'],
@@ -39,7 +39,7 @@ def fetch_info_about_movie(url_of_movie):
         'voters_count': int(film_info['aggregateRating']['ratingCount']),
         'genre': film_info['genre'],
         'mpaa_rating': film_info['contentRating'],
-        'img_min': url_img_352x198
+        'small_image_url': url_img_352x198
     }
     return info_to_return
 

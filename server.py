@@ -1,17 +1,16 @@
 from datetime import timedelta, datetime
 import re
 import json
-from flask import Flask, render_template
+from flask import Flask, render_template, abort
 from model import Film, db, add_film_in_db, get_info_about_film_from_db
 from afisha import parse_afisha_list, fetch_info_about_movie
-
 
 app = Flask(__name__)
 app.config.from_object('config')
 db.init_app(app)
 
-FILMS_AMOUNT = 3
-last_update_time = datetime.fromtimestamp(0) # FIXME rename variable from snake-style
+FILMS_AMOUNT = 10
+last_update_time = datetime.fromtimestamp(0)  # FIXME rename variable from snake-style
 
 
 @app.route('/')
@@ -30,12 +29,15 @@ def films_list():
 
 @app.route('/movie/<int:film_id>', methods=['GET'])
 def film_page(film_id):
-    return render_template('film_page.html', info=get_info_about_film_from_db(film_id))
+    info_about_film = get_info_about_film_from_db(film_id)
+    if info_about_film is None:
+        abort(404)
+    return render_template('film_page.html', info=info_about_film)
 
 
 @app.route('/api/movies', methods=['GET'])
 def api_get_list():
-    list_of_films ={'movies': []}
+    list_of_films = {'movies': []}
     for movie in parse_afisha_list(FILMS_AMOUNT):
         list_of_films['movies'].append({'url': movie,
                                         'id': re.findall(r'http://www.afisha.ru/movie/(\d+)/', movie)[0]})

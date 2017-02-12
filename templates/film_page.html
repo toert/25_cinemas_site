@@ -37,12 +37,12 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-offset-1 col-sm-5 max-height">
-                <br><h1 class="red-header">{{info["name"]}}</h1>
+                <br><h1 class="blue-header">{{info["name"]}}</h1>
                 
             </div>
             <div class="col-xs-12 col-sm-of col-sm-5">
                 <h2>Рейтинг фильма</h2>
-                <h1 class="red-header">{{info['rating']}} <span class="glyphicon glyphicon-star grey"></span> {{info['voters_count']}} <span class="glyphicon glyphicon-user grey"></span></h1>
+                <h1 class="blue-header">{{info['rating']}} <span class="glyphicon glyphicon-star grey"></span> {{info['voters_count']}} <span class="glyphicon glyphicon-user grey"></span></h1>
                 
             </div>
         </div>
@@ -53,10 +53,10 @@
         <div class="row">
                 <p>{{info['review']}}</p>
           <hr>
-          <h2 class="red-header">Прочая информация</h2><br>
-		<dl>
+          <h2 class="blue-header">Прочая информация</h2><br>
+		<dl class="dl-horizontal">
 			<dt>Оригинальное название</dt>
-			<dd>{{info['alt_name']}}</dd>
+			<dd>{{info['original_lang_name']}}</dd>
           <dt>Жанр</dt>
           <dd>{{info['genre']}}</dd>
 			<dt>MPAA возрастной рейтинг фильма</dt>

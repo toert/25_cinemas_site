@@ -41,13 +41,20 @@ body {
     padding-right: 0;
 }
 
+.dl-horizontal dt 
+{
+    white-space: normal;
+    width: 200px;
+	padding-right: 20px;
+}
+
 .blue {
     color: cornflowerblue;
 }
 
-.red-header {
-
-	color: #F33;
+.blue-header {
+	
+	color: cornflowerblue;
 }
 
 .grey {
@@ -74,6 +81,6 @@ body {
 
 .afisha-button, .afisha-button:hover, .afisha-button:active, .afisha-button:focus {
   color: white;
-  background: #F33;
+  background: cornflowerblue;
 
 }
