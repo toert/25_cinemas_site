@@ -15,4 +15,4 @@ https://movies-digest.herokuapp.com/
 
     python3 server.py
     
-переходим по [ссылке](http://localhost:5000), готово.
+переходим на [http://localhost:5000](http://localhost:5000), готово.
